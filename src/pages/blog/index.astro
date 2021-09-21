@@ -1,3 +1,8 @@
+---
+import slugify from 'slugify'
+let allPosts = Astro.fetchContent('../../posts/*.md')
+allPosts = allPosts.map(post => { return {...post, slug: '/blog/' + slugify(post.title, { lower: true, remove: /[!]/g }) }})
+---
 <html>
   <head>
     <meta charset="UTF-8">
@@ -10,5 +15,11 @@
   <body>
     <a href="/">Home</a>
     <h1>Blog</h1>
+
+    <ul>
+      {allPosts.map(post => (
+        <li><a href={post.slug}>{post.title}</a></li>
+      ))}
+    </ul>
   </body>
 </html>

@@ -1,0 +1,32 @@
+---
+interface Post {
+  title: string
+  author: string
+  date: string
+  thumbnail: string
+  astro: any
+}
+
+interface Props {
+  post: Post
+}
+
+const { post } = Astro.props as Props
+---
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{post.title}</title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/style/global.css">
+  </head>
+  <body>
+    <a href="/blog">&larr; Back</a>
+    <h1>{post.title}</h1>
+    <h3>Written by {post.author}</h3>
+    <img src={post.thumbnail} />
+    {post.astro.html}
+  </body>
+</html>
