@@ -3,9 +3,11 @@ backend:
   branch: main
 media_folder: '/public/uploads'
 public_folder: '/uploads'
+locale: 'de'
 collections:
   - name: 'post'
-    label: 'Post'
+    label: 'Posts'
+    label_singular: 'Post'
     folder: '/src/posts'
     create: true
     slug: '{{slug}}'
@@ -16,8 +18,8 @@ collections:
       - { label: 'Featured Image', name: 'thumbnail', widget: 'image' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: 'about'
-    label: 'About'
-    folder: '/src/data/sections'
-    slug: '{{slug}}'
+    label: 'About section'
+    file: '/src/content/about.md'
     fields:
       - { label: 'Headline', name: 'headline', widget: 'string' }
+      - { label: 'Text', name: 'text', widget: 'markdown' }
