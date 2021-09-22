@@ -34,6 +34,11 @@ p {
 
 ul li {
   list-style-type: none;
+  margin: 1.4rem 0;
+}
+
+nav {
+  margin-top: 2.4rem;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -3,7 +3,6 @@ backend:
   branch: main
 media_folder: '/public/uploads'
 public_folder: '/uploads'
-locale: 'de'
 collections:
   - name: 'post'
     label: 'Posts'
@@ -21,7 +20,7 @@ collections:
     name: 'sections'
     files:
       - name: 'about'
-        label: 'About section'
+        label: 'About'
         file: '/src/content/about.md'
         fields:
           - { label: 'Headline', name: 'headline', widget: 'string' }

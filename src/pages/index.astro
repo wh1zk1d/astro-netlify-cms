@@ -1,21 +1,41 @@
 ---
-let title = 'My Astro Site';
+import BaseHead from '../components/BaseHead.astro'
+
+interface AboutSection {
+  headline: string
+  text: string
+  astro: {
+    headers: string[],
+    source: string
+    html: string
+  }
+}
+
+// Get section content
+const about = Astro.fetchContent('../content/about.md')[0] as AboutSection
 ---
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <title>{title}</title>
+    <BaseHead title="Home" description="Built with Astro and Netlify CMS" />
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/style/global.css">
-
+    <!-- Netlify Identity script -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-    <a href="/blog">Blog</a>
+    <a href="/"><img src="/assets/logo.svg" width="72" alt="Astro Logo" /></a>
+    <nav>
+      <a href="/blog">Blog</a>
+    </nav>
     <h1>Welcome to Astro!</h1>
+    <p>This text is hardcoded, everything else comes straight from Netlify CMS in form of Markdown files.</p>
 
+    <!-- About section -->
+    <section>
+      <h2>{about.headline}</h2>
+      {about.astro.html}
+    </section>
+
+    <!-- Redirect to Netlify CMS after login -->
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
